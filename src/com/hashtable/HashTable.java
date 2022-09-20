@@ -16,7 +16,7 @@ public class HashTable<Key, Value> {
 		}
 	}
 	
-	private int hashFunction(Key key) {
+	public int hashFunction(Key key) {
 		return (key.hashCode() % capacity) >= 0 ? (key.hashCode() % capacity) : -(key.hashCode() % capacity);
 	}
 	
@@ -87,8 +87,17 @@ public class HashTable<Key, Value> {
 		return count;
 	}
 	
+	/**
+	 * mkae hash table print with its array and linked lists
+	 */
+	private void makePrint() {
+		for(int index = 0; index < capacity; index++) {
+			System.out.println(index+" == "+hashArray[index].toString());
+		}
+	}
+	
 	public static void main(String[] args) {
-		String sentence = "To be or not to be";
+		String sentence = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
 		HashTable<String, Integer> frequencyOfWords = new HashTable<String, Integer>();
 		String[] words = sentence.split(" ");
 		// Store frequencies of words into Hash Table data structure 
@@ -100,7 +109,8 @@ public class HashTable<Key, Value> {
 			} else frequencyOfWords.put(word, 1);
 		// Show all words frequencies from Hash Table data structure
 		for(Entry entry : frequencyOfWords.all()) {
-			System.out.println("Frequency of \""+entry.key+"\" in sentence is "+entry.value);
+			if (entry != null)
+				System.out.println("Frequency of \""+entry.key+"\" in sentence is "+entry.value);
 		}	
 	}
 

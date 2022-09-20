@@ -15,4 +15,8 @@ public class MyMapNode<Key, Value> {
 		this.key = key;
 		this.value = value;
 	}
+	
+	public String toString() {
+		return "[ "+key+" : "+value+" => "+next+" ]";
+	}
 }

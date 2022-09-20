@@ -86,6 +86,7 @@ public class LinkedList<Key, Value> {
 		while(currentNode != null) {
 			result[index] = new Entry<Key, Value>(currentNode.key, currentNode.value);
 			currentNode = currentNode.next;
+			index++;
 		}
 		return result;
 	}
@@ -107,5 +108,10 @@ public class LinkedList<Key, Value> {
 			currentNode = currentNode.next;
 		}
 		return count;
+	}
+	
+	public String toString() {
+		if(!isEmpty())	return head.toString();
+		else return "null";
 	}
 }
