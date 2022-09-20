@@ -112,6 +112,25 @@ public class HashTable<Key, Value> {
 			if (entry != null)
 				System.out.println("Frequency of \""+entry.key+"\" in sentence is "+entry.value);
 		}	
+		// have to remove avoidable from sentence
+		String wordToRemove = "avoidable";
+		try {
+			int frequencyOfWordToRemove = frequencyOfWords.get(wordToRemove);
+			int beginIndex = 0;
+			System.out.println(wordToRemove.length());
+			while(frequencyOfWordToRemove > 0) {
+				if(sentence.substring(beginIndex, beginIndex + wordToRemove.length()).equals(wordToRemove)) {
+					sentence = sentence.substring(0, beginIndex) + sentence.substring(beginIndex+wordToRemove.length());
+					frequencyOfWordToRemove--;
+				} else {
+					beginIndex++;
+				}
+			}
+			System.out.println(sentence);	
+		} catch (Exception e) {
+			System.out.println("Word not found");
+		}
+		
 	}
 
 }
